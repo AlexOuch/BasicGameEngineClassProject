@@ -1,6 +1,4 @@
-﻿  main.cpp
-c:\users\alex\documents\visual studio 2017\setup project\setup project\main.cpp(106): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\alex\documents\visual studio 2017\setup project\setup project\main.cpp(107): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\alex\documents\visual studio 2017\setup project\setup project\main.cpp(108): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\alex\documents\visual studio 2017\setup project\setup project\main.cpp(128): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+﻿  Hero.cpp
+c:\users\alex\documents\visual studio 2017\setup project\setup project\hero.cpp(36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\alex\documents\visual studio 2017\setup project\setup project\hero.cpp(38): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   Setup Project.vcxproj -> C:\Users\Alex\Documents\Visual Studio 2017\Setup Project\Debug\Setup Project.exe

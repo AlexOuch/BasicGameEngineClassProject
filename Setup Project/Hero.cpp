@@ -18,9 +18,9 @@ void Hero::setAnimation(Animation* animation) {
 //overriding
 void Hero::update(float dt) {
 	if (faceRight)
-		x += dt*30;
+		x += dt*800;
 	else
-		x -= dt*30;
+		x -= dt*800;
 
 	if (x >= 640)
 		faceRight = false;

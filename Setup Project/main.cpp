@@ -115,7 +115,11 @@ int main(int argc, char **argv)
 	Hero* hero = new Hero();
 	hero->setAnimation(&anim3);
 	hero->setRenderer(renderer);
-	hero->setXY(30, 200);
+	
+	//build vector to represent starting position for hero
+	Vector heroStartPos(200, 200);
+	hero->setPosition(heroStartPos);
+
 	//add our hero to the list
 	entities.push_back(hero);
 
@@ -164,6 +168,40 @@ int main(int argc, char **argv)
 		anim3.draw(50, 250, true); //flip image horizontally???
 		*/
 		
+		//DEAL WITH USER INPUT
+		//we check what kind of user input events have happened since our last check
+		SDL_Event e;
+		
+		//loops through all events and temporarily stores event details in an SDL_Event object
+		while (SDL_PollEvent(&e)) {
+			//check if user has clicked on the close window button
+			if (e.type == SDL_QUIT) {
+				//exit our loop
+				loop = false;
+			}
+			//check if user has 'pressed' a button (not held)
+			if (e.type == SDL_KEYDOWN) {
+				//see if ESC key was pressed
+				if (e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+					//exit loop
+					loop = false;
+				}
+				// if UP key is pressed
+				if (e.key.keysym.scancode == SDL_SCANCODE_UP) {
+					Vector heroVelocity = hero->getVelocity();
+					heroVelocity.y = -500;
+					hero->setVelocity(heroVelocity);
+				}
+				// if DOWN key is pressed
+				if (e.key.keysym.scancode == SDL_SCANCODE_DOWN) {
+					Vector heroVelocity = hero->getVelocity();
+					heroVelocity.y = 500;
+					hero->setVelocity(heroVelocity);
+				}
+			}
+
+		}
+
 		//loop through and update and draw all entities
 		for (list<Entity*>::iterator eIt = entities.begin(); eIt != entities.end(); eIt++) {
 			(*eIt)->update(DT);
@@ -176,11 +214,11 @@ int main(int argc, char **argv)
 		SDL_RenderPresent(renderer);
 
 		//sdl_ticks checks how many milliseconds since we started running our game
-		if (SDL_GetTicks() > 5000)
+		/*if (SDL_GetTicks() > 5000)
 		{
 			loop = false;	
 		}
-
+		*/
 	}
 
 	delete hero;
